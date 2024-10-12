@@ -4,32 +4,33 @@ import matplotlib.pyplot as plt
 import scipy.integrate as integrate
 import matplotlib.animation as animation
 
-G = 9.8  # acceleration due to gravity, in m/s^2
-L1 = 2.0  # length of pendulum 1 in m
+from pendrum import physical_const as pc
+
+L1 = 1.0  # length of pendulum 1 in m
 L2 = 1.0  # length of pendulum 2 in m
 M1 = 1.0  # mass of pendulum 1 in kg
-M2 = 10.0  # mass of pendulum 2 in kg
+M2 = 1.0  # mass of pendulum 2 in kg
 
 
-def derivs(state, t):
+def derivs(y, t):
+    g = pc.GRAVITATIONAL_ACCELERATION
+    dydx = np.zeros_like(y)
+    dydx[0] = y[1]
 
-    dydx = np.zeros_like(state)
-    dydx[0] = state[1]
-
-    del_ = state[2] - state[0]
+    del_ = y[2] - y[0]
     den1 = (M1 + M2)*L1 - M2*L1*cos(del_)*cos(del_)
-    dydx[1] = (M2*L1*state[1]*state[1]*sin(del_)*cos(del_) +
-               M2*G*sin(state[2])*cos(del_) +
-               M2*L2*state[3]*state[3]*sin(del_) -
-               (M1 + M2)*G*sin(state[0]))/den1
+    dydx[1] = (M2*L1*y[1]*y[1]*sin(del_)*cos(del_) +
+               M2*g*sin(y[2])*cos(del_) +
+               M2*L2*y[3]*y[3]*sin(del_) -
+               (M1 + M2)*g*sin(y[0]))/den1
 
-    dydx[2] = state[3]
+    dydx[2] = y[3]
 
     den2 = (L2/L1)*den1
-    dydx[3] = (-M2*L2*state[3]*state[3]*sin(del_)*cos(del_) +
-               (M1 + M2)*G*sin(state[0])*cos(del_) -
-               (M1 + M2)*L1*state[1]*state[1]*sin(del_) -
-               (M1 + M2)*G*sin(state[2]))/den2
+    dydx[3] = (-M2*L2*y[3]*y[3]*sin(del_)*cos(del_) +
+               (M1 + M2)*g*sin(y[0])*cos(del_) -
+               (M1 + M2)*L1*y[1]*y[1]*sin(del_) -
+               (M1 + M2)*g*sin(y[2]))/den2
 
     return dydx
 
@@ -42,10 +43,10 @@ t = np.arange(0.0, 20, dt)
 th1 = 120.0 
 w1 = 0.0
 th2 = -10.0
-w2 = 0.0 # initial state 
-state = np.radians([th1, w1, th2, w2]) 
+w2 = 0.0 # initial y 
+y = np.radians([th1, w1, th2, w2]) 
 # integrate your ODE using SciPy.integrate. 
-y = integrate.odeint(derivs, state, t) 
+y = integrate.odeint(derivs, y, t) 
 
 
 

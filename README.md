@@ -8,6 +8,27 @@ N重振り子のシミュレーション
 ## 環境
 
 ## ディレクトリ構成
+pendrum(root) /
+ ├─ venv /
+ ├─ .gitignore
+ ├─ requirement.txt
+ │
+ ├─ pendrum /
+ │   ├─ __init__.py
+ │   ├─ __main__.py
+ │   ├─ numcal.py
+ │   ├─ physics_const.py
+ │      
+ │
+ ├─ docs /
+ │   ├─ conf.py
+ │
+ ├─ tests /
+ │
+ ├─ README.md
+ ├─ .gitignore
+ ├─ venv /
+ └─ requirements.txt
 
 ## 開発環境構築
 
@@ -16,7 +37,7 @@ python3 -m venv venv
 source venv/bin/activate  
 
 
-
+必要なモジュールをインストールする：  
 pip install -r requirements.txt
 
 

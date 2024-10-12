@@ -23,3 +23,21 @@ pip install -r requirements.txt
 
 ## 実行方法
 python -m pendrum
+
+
+## ヘルプ
+### 誤ってプロジェクトに関係のないファイル・フォルダをプッシュした場合
+
+以下のように入力する：
+* ファイル
+git rm --cashed [ファイル名]
+
+--cashedを付ける場合、localのファイルは削除されない。
+
+* フォルダ
+ git rm -r --cached [フォルダ名]/
+
+ 例）仮想環境venvをプッシュしてしまった場合
+ git rm -r --cached venv/
+
+

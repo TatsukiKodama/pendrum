@@ -8,27 +8,23 @@ N重振り子のシミュレーション
 ## 環境
 
 ## ディレクトリ構成
-pendrum(root) /
- ├─ venv /
- ├─ .gitignore
- ├─ requirement.txt
- │
- ├─ pendrum /
- │   ├─ __init__.py
- │   ├─ __main__.py
- │   ├─ numcal.py
- │   ├─ physics_const.py
- │      
- │
- ├─ docs /
- │   ├─ conf.py
- │
- ├─ tests /
- │
- ├─ README.md
- ├─ .gitignore
- ├─ venv /
- └─ requirements.txt
+pendrum(root) /      
+ ├─ pendrum /  
+ │   ├─ __init__.py  
+ │   ├─ __main__.py  
+ │   ├─ numcal.py  
+ │   ├─ physics_const.py  
+ │     
+ │  
+ ├─ docs /  
+ │   ├─ conf.py  
+ │  
+ ├─ tests /  
+ │  
+ ├─ README.md  
+ ├─ .gitignore  
+ ├─ venv /  
+ └─ requirements.txt  
 
 ## 開発環境構築
 
@@ -60,5 +56,33 @@ git rm --cashed [ファイル名]
 
  例）仮想環境venvをプッシュしてしまった場合
  git rm -r --cached venv/
+
+## メモ
+@演算子：行列の積を表す二項演算子  
+例）
+$$ 
+A = 
+\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}
+\,,
+\qquad
+B = 
+\begin{pmatrix}
+5 & 6 \\
+7 & 8
+\end{pmatrix}
+$$
+のとき
+$$
+A @ B = 
+\begin{pmatrix}
+19 & 24 \\
+45 & 50
+\end{pmatrix}
+$$
+（通常の行列の積と同じ）
+
 
 

@@ -2,6 +2,7 @@ import numpy as np
 def give_xy_coordinate(L: list, y: any):
     '''
     N重振り子について、それぞれの質点の角度を座標に置き換える関数
+    注意）汎用的な関数ではない
 
     引数）
     L: 腕の長さのリスト

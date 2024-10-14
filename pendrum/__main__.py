@@ -10,7 +10,7 @@ from pendrum import calculation as calc
 # Listの数と系の状態が整合しているか？
 result = lu.is_list(s.M, s.L)
 if (result == False): exit()
-lu.check_lists_length(s.PARTICLE_NUMBER, s.M, s.L)
+result = lu.check_lists_length(s.PARTICLE_NUMBER, s.M, s.L)
 if (result == False): exit()
 
 # 計算部分
@@ -40,5 +40,8 @@ def animate(i):
     time_text.set_text(time_template % (i*s.DELTA_TIME)) 
     return line, time_text 
 
+line, time_text = animate(0)
+print(f'{line}, {time_text}')
+exit()
 ani = animation.FuncAnimation(fig, animate, np.arange(1, len(y)), interval=25, blit=True, init_func=init) 
 plt.show()
